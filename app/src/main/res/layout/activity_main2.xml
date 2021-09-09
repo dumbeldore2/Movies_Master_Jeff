@@ -35,15 +35,33 @@
             android:layout_gravity="center" />
 
     </LinearLayout>
+    <TextView
+        android:id="@+id/text_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/linear"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="movies"
+        android:fontFamily="@font/montserrat_alternates"
+        android:textSize="48dp"/>
+    <TextView
+        android:id="@+id/text_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear"
+        android:text="series"
+        android:fontFamily="@font/montserrat_alternates"
+        android:textSize="48dp"/>
+
     <LinearLayout
         android:id="@+id/linear1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/linear">
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
