@@ -45,7 +45,17 @@
         android:fontFamily="@font/montserrat_alternates"
         android:textSize="48dp"
         android:background="@drawable/button_on"
+        android:textColor="@color/white"
         android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_line_2"
+        app:layout_constraintBottom_toBottomOf="@id/text_4"
+        app:layout_constraintEnd_toStartOf="@id/text_4"
+        app:layout_constraintStart_toEndOf="@id/text_3"
+        app:layout_constraintTop_toTopOf="@id/text_3" />
     <TextView
         android:id="@+id/text_4"
         android:layout_width="wrap_content"
@@ -56,6 +66,7 @@
         android:fontFamily="@font/montserrat_alternates"
         android:textSize="48dp"
         android:background="@drawable/button_off"
+        android:textColor="@color/color1"
         android:layout_marginTop="10dp"/>
 
     <LinearLayout
