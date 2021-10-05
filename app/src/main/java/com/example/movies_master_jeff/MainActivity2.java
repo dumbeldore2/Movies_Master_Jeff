@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity2 extends AppCompatActivity {
@@ -26,6 +27,15 @@ public class MainActivity2 extends AppCompatActivity {
 
     // linear initen
     LinearLayout linearLayout;
+
+    //dit zijn de namen voor de listview
+    String namen[] = {"default"};
+
+    //de listvieuw
+    ListView listView;
+
+    //de listview adapter
+    MainActivity2_lijst mainActivity2_lijst;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -46,6 +56,14 @@ public class MainActivity2 extends AppCompatActivity {
         textview_1 = findViewById(R.id.text_1);
         textview_3 = findViewById(R.id.text_3);
         textview_4 = findViewById(R.id.text_4);
+
+        //listview aan een object vast hangen
+        listView = findViewById(R.id.list_view_1);
+        System.out.println(namen.length);
+
+        //de adapter aan het listview hangen
+        mainActivity2_lijst = new MainActivity2_lijst(this,namen);
+        listView.setAdapter(mainActivity2_lijst);
 
         //funties
         kleur_knop();
