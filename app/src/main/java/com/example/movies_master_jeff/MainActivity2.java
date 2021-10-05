@@ -29,7 +29,7 @@ public class MainActivity2 extends AppCompatActivity {
     LinearLayout linearLayout;
 
     //dit zijn de namen voor de listview
-    String namen[] = {"default"};
+    String namen[] = {"spider - man : far from home"};
 
     //de listvieuw
     ListView listView;
@@ -59,7 +59,6 @@ public class MainActivity2 extends AppCompatActivity {
 
         //listview aan een object vast hangen
         listView = findViewById(R.id.list_view_1);
-        System.out.println(namen.length);
 
         //de adapter aan het listview hangen
         mainActivity2_lijst = new MainActivity2_lijst(this,namen);
