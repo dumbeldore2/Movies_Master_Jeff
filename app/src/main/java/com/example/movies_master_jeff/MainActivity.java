@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         );
-        getWindow().setNavigationBarColor(Color.TRANSPARENT);
-        getWindow().setStatusBarColor(Color.TRANSPARENT);
+        getWindow().setNavigationBarColor(getResources().getColor(R.color.color1));
+        getWindow().setStatusBarColor(getResources().getColor(R.color.color2));
 
         //conecteren van string
         textView = findViewById(R.id.text_1);
