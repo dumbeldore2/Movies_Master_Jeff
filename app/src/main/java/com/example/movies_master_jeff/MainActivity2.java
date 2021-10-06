@@ -29,7 +29,7 @@ public class MainActivity2 extends AppCompatActivity {
     LinearLayout linearLayout;
 
     //dit zijn de namen voor de listview
-    String namen[] = {"spider - man : far from home"};
+    String namen[] = {"spider - man : far from home","the davinci code"};
 
     //de listvieuw
     ListView listView;
