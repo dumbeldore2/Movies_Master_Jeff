@@ -19,7 +19,7 @@ import android.widget.TextView;
 
 public class MainActivity2 extends AppCompatActivity {
     //String initen
-    TextView textview_1,textview_3,textview_4;
+    TextView textview_1,textview_3,textview_4,textView_5;
 
     //animatie initen
     Animation animation;
@@ -56,6 +56,7 @@ public class MainActivity2 extends AppCompatActivity {
         textview_1 = findViewById(R.id.text_1);
         textview_3 = findViewById(R.id.text_3);
         textview_4 = findViewById(R.id.text_4);
+        textView_5 = findViewById(R.id.text_5);
 
         //listview aan een object vast hangen
         listView = findViewById(R.id.list_view_1);
@@ -69,6 +70,7 @@ public class MainActivity2 extends AppCompatActivity {
         background_ani();
         click_textview3();
         click_textview4();
+        click_textview5();
     }
 
 
@@ -108,6 +110,16 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
                 intent.putExtra("nummer",1);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void click_textview5(){
+        textView_5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity3.class);
                 startActivity(intent);
             }
         });
