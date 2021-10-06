@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
@@ -26,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
     //constraint layout initen voor background
     ConstraintLayout constraintLayout;
+
+    //de int dat beslist hoelang deze pagina op blijft
+    private static int SPLASH_TIME_OUT = 4000;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -48,7 +52,20 @@ public class MainActivity extends AppCompatActivity {
 
         //funties
         background_ani();
+        /*
         click_1();
+         */
+
+        //de spash
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(MainActivity.this,MainActivity2.class);
+                startActivity(intent
+                );
+                finish();
+            }
+        },SPLASH_TIME_OUT);
     }
 
     //de functie voor de animatie
@@ -60,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         animationDrawable.start();
     }
 
+    /*
     //fun click letsgo
     public void click_1(){
         textview_2.setOnClickListener(new View.OnClickListener() {
@@ -77,4 +95,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent,options.toBundle());            }
         });
     }
+     */
 }
