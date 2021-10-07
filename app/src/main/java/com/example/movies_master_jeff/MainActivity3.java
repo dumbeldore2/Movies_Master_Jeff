@@ -32,7 +32,7 @@ public class MainActivity3 extends AppCompatActivity {
     EditText editText;
 
     //textview initen
-    TextView textView2_exta,textView4;
+    TextView textView1,textView2_exta,textView4;
 
     //intent initen
     Intent intent;
@@ -62,6 +62,7 @@ public class MainActivity3 extends AppCompatActivity {
         editText = findViewById(R.id.editText_1);
 
         //Textview connecten
+        textView1 = findViewById(R.id.text_1);
         textView2_exta = findViewById(R.id.text_2_extra);
         textView4 = findViewById(R.id.text_4);
 
@@ -75,6 +76,7 @@ public class MainActivity3 extends AppCompatActivity {
         background_ani();
         fun_text();
         click_text_4();
+        fun_back();
     }
 
     public void background_ani(){
@@ -107,5 +109,15 @@ public class MainActivity3 extends AppCompatActivity {
         if (nummer == 1){
             textView2_exta.setText("Add series");
         }
+    }
+
+    public void fun_back(){
+        textView1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -72,7 +72,9 @@ public class MainActivity2 extends AppCompatActivity {
         database = new Database(this);
         //funties
         kleur_knop();
+        /*
         background_ani();
+         */
         click_textview3();
         click_textview4();
         click_textview5();
@@ -84,7 +86,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     }
 
-
+/*
     //de functie voor de animatie
     public void background_ani(){
         animationDrawable = (AnimationDrawable) linearLayout.getBackground();
@@ -92,6 +94,8 @@ public class MainActivity2 extends AppCompatActivity {
         animationDrawable.setExitFadeDuration(2000);
         animationDrawable.start();
     }
+
+ */
 
     //de functie om ervoor te zorgen dat de background word veranderd van de twee buttons
     public void kleur_knop(){

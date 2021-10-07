@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="horizontal"
-        android:background="@drawable/animation_list"
+        android:background="@drawable/gradiant3"
         android:transitionName="1">
 
         <TextView
