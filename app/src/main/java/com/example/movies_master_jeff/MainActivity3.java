@@ -32,7 +32,13 @@ public class MainActivity3 extends AppCompatActivity {
     EditText editText;
 
     //textview initen
-    TextView textView4;
+    TextView textView2_exta,textView4;
+
+    //intent initen
+    Intent intent;
+
+    //nummer ininten
+    int nummer;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -56,9 +62,18 @@ public class MainActivity3 extends AppCompatActivity {
         editText = findViewById(R.id.editText_1);
 
         //Textview connecten
+        textView2_exta = findViewById(R.id.text_2_extra);
         textView4 = findViewById(R.id.text_4);
+
+        //intent connecten
+        intent = getIntent();
+
+        //nummer connecten
+        nummer = intent.getIntExtra("nummer",0);
+
         //funties
         background_ani();
+        fun_text();
         click_text_4();
     }
 
@@ -86,5 +101,11 @@ public class MainActivity3 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void fun_text(){
+        if (nummer == 1){
+            textView2_exta.setText("Add series");
+        }
     }
 }

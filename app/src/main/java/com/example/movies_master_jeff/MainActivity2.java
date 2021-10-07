@@ -18,6 +18,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity2 extends AppCompatActivity {
+    //nummer voor welke fase ma2 inzit
+    int nummer ;
+
     //String initen
     TextView textview_1,textview_3,textview_4,textView_5;
 
@@ -51,6 +54,7 @@ public class MainActivity2 extends AppCompatActivity {
         );
         getWindow().setNavigationBarColor(getResources().getColor(R.color.color1));
         getWindow().setStatusBarColor(getResources().getColor(R.color.color2));
+
 
         //linear connecten
         linearLayout = findViewById(R.id.linear);
@@ -97,6 +101,7 @@ public class MainActivity2 extends AppCompatActivity {
             textview_4.setTextColor(getResources().getColor(R.color.white));
             textview_3.setBackgroundResource(R.drawable.button_off);
             textview_3.setTextColor(getResources().getColor(R.color.color1));
+            nummer = 1;
         }
     }
 
@@ -127,6 +132,7 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity3.class);
+                intent.putExtra("nummer",nummer);
                 startActivity(intent);
             }
         });
