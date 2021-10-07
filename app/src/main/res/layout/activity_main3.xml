@@ -61,6 +61,7 @@
             android:layout_marginBottom="5dp"/>
 
         <EditText
+            android:id="@+id/editText_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="naam?"
@@ -73,7 +74,7 @@
             android:inputType="text"/>
 
         <TextView
-            android:id="@+id/text_5"
+            android:id="@+id/text_4"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             app:layout_constraintEnd_toEndOf="parent"

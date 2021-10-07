@@ -29,13 +29,16 @@ public class MainActivity2 extends AppCompatActivity {
     LinearLayout linearLayout;
 
     //dit zijn de namen voor de listview
-    String namen[] = {"spider - man : far from home","the davinci code"};
+    String namen[] = {};
 
     //de listvieuw
     ListView listView;
 
     //de listview adapter
     MainActivity2_lijst mainActivity2_lijst;
+
+    //database initen
+    Database database;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -61,16 +64,20 @@ public class MainActivity2 extends AppCompatActivity {
         //listview aan een object vast hangen
         listView = findViewById(R.id.list_view_1);
 
-        //de adapter aan het listview hangen
-        mainActivity2_lijst = new MainActivity2_lijst(this,namen);
-        listView.setAdapter(mainActivity2_lijst);
-
+        //database conecteren
+        database = new Database(this);
         //funties
         kleur_knop();
         background_ani();
         click_textview3();
         click_textview4();
         click_textview5();
+        addToListview();
+
+        //de adapter aan het listview hangen
+        mainActivity2_lijst = new MainActivity2_lijst(this,namen);
+        listView.setAdapter(mainActivity2_lijst);
+
     }
 
 
@@ -123,5 +130,10 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    public void addToListview(){
+        if (database.namen().length != 0){
+            namen = database.namen().clone();
+        }
     }
 }
