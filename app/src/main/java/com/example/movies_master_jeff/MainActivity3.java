@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -39,6 +40,14 @@ public class MainActivity3 extends AppCompatActivity {
 
     //nummer ininten
     int nummer;
+
+    //foto ininten
+    ImageView imageView;
+
+    //for fotos to get
+    private static final int IMAGE_PICK_CODE = 1000;
+    private static final int PERMISSON_CODE = 1001;
+    private static final int SELECT_FOTO = 100;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -71,6 +80,9 @@ public class MainActivity3 extends AppCompatActivity {
 
         //nummer connecten
         nummer = intent.getIntExtra("nummer",0);
+
+        //imageview connnecten
+        imageView = findViewById(R.id.image_1);
 
         //funties
         background_ani();
@@ -120,4 +132,16 @@ public class MainActivity3 extends AppCompatActivity {
             }
         });
     }
+/* dit is waarschgijnlijk niet de juiste mannier
+    public void fun_image_click(){
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent,SELECT_FOTO);
+            }
+        });
+    }
+ */
 }
