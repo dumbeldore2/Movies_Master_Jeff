@@ -89,6 +89,7 @@ public class MainActivity3 extends AppCompatActivity {
         fun_text();
         click_text_4();
         fun_back();
+        fun_image_click();
     }
 
     public void background_ani(){
