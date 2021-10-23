@@ -132,7 +132,7 @@ public class MainActivity3 extends AppCompatActivity {
             }
         });
     }
-/* dit is waarschgijnlijk niet de juiste mannier
+ //dit is waarschgijnlijk niet de juiste mannier
     public void fun_image_click(){
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,5 +143,4 @@ public class MainActivity3 extends AppCompatActivity {
             }
         });
     }
- */
 }
