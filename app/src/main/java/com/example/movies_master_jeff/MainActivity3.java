@@ -1,11 +1,14 @@
 package com.example.movies_master_jeff;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -140,8 +143,22 @@ public class MainActivity3 extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
-                startActivityForResult(intent,SELECT_FOTO);
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"Select Image(s)"), IMAGE_PICK_CODE);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode , @Nullable Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+
+        if (requestCode == IMAGE_PICK_CODE){
+            if (resultCode == Activity.RESULT_OK){
+                Uri imageUri = data.getData();
+                imageView.setImageURI(imageUri);
+            }
+        }
     }
 }
