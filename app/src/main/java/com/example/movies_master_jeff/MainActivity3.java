@@ -137,7 +137,8 @@ public class MainActivity3 extends AppCompatActivity {
                 if (ActivityCompat.checkSelfPermission(MainActivity3.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     System.out.println("true");
                     {
-
+                        database.addToTabel1(getNaam(),nummer);
+                        startActivity(intent);
                     }
                 }else {
                     ActivityCompat.requestPermissions(MainActivity3.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},100);
