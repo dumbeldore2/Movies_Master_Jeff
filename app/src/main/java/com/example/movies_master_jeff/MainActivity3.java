@@ -134,56 +134,14 @@ public class MainActivity3 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
-                if (!getNaam().isEmpty()){
-                    database.addToTabel1(getNaam(),1);
-                    Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+                if (ActivityCompat.checkSelfPermission(MainActivity3.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                    System.out.println("true");
+                    {
 
-                    File filepath = Environment.getStorageDirectory();
-                    File dir = new File(filepath.getAbsolutePath() + "/Demo/");
-
-                    if (ActivityCompat.checkSelfPermission(MainActivity3.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                        System.out.println("true");
-                        if (dir.exists()){
-                            Toast.makeText(getApplicationContext(),"Directiry already exists",Toast.LENGTH_SHORT).show();
-                        } else {
-                            dir.mkdirs();
-                            if (dir.isDirectory()){
-                                System.out.println("lol het werkt toch");
-                            } else {
-                                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity3.this);
-                                String smessage = "Message : failed to creeate directory";
-                                builder.setMessage(smessage);
-                            }
-                        }
-                    }else {
-                        ActivityCompat.requestPermissions(MainActivity3.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},100);
-                        System.out.println("denieeed");
                     }
+                }else {
+                    ActivityCompat.requestPermissions(MainActivity3.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},100);
 
-
-                    System.out.println(dir.exists());
-                    File file = new File(dir, System.currentTimeMillis()+".jpg");
-                    try {
-                        outputStream = new FileOutputStream(file);
-                        System.out.println("dees is gelukt");
-                    } catch (FileNotFoundException e) {
-                        System.out.println("dees is niet gelukt");
-                        e.printStackTrace();
-                    }
-                    bitmap.compress(Bitmap.CompressFormat.JPEG,100,outputStream);
-                    Toast.makeText(getApplicationContext(),"Image save To internal",Toast.LENGTH_SHORT).show();
-                    try {
-                        outputStream.flush();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    try {
-                        outputStream.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    startActivity(intent);
                 }
             }
         });
