@@ -138,6 +138,7 @@ public class MainActivity3 extends AppCompatActivity {
                     System.out.println("true");
                     {
                         database.addToTabel1(getNaam(),nummer);
+                        createFolder();
                         startActivity(intent);
                     }
                 }else {
@@ -146,6 +147,49 @@ public class MainActivity3 extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        //check statement
+        if(requestCode == 100 && (grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)){
+            //dit is als er permision is
+            createFolder();
+        } else {
+            //wanneer er geen permision is
+            Toast.makeText(getApplicationContext(),"permision denied",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void  createFolder(){
+        //init file
+        File file = new File(Environment.getExternalStorageDirectory(),"lol");
+        System.out.println(Environment.getExternalStorageDirectory().getAbsolutePath());
+        System.out.println(Environment.getExternalStorageDirectory().getPath());
+        File file2 = new File("/storage/lol");
+        //check condition
+        if (file.exists()){
+            //dit is als de directory al bestaat
+            //display toast
+            Toast.makeText(getApplicationContext(),"het bestaat al",Toast.LENGTH_LONG).show();
+        } else {
+            //dit is als de directory nog niet bestaat
+            System.out.println("lllllllllllllllllllllllllllllllol");
+            file.mkdir();
+            file2.mkdir();
+            //check conditie
+            if (file.isDirectory()){
+                //als de directory is gemaakt
+                Toast.makeText(getApplicationContext(),"het is gemaakt",Toast.LENGTH_LONG).show();
+            } else {
+                //als de directory niet gemaakt is
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity3.this);
+                String smessage = "mesage : failed to create directory" + "\npath : " +Environment.getExternalStorageState() + "\nmkdirs : " + file.mkdirs();
+                builder.setMessage(smessage);
+                builder.show();
+            }
+        }
     }
 
     public void fun_text(){
