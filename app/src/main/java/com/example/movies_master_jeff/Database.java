@@ -19,6 +19,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String Table_1_col_0 = "object_id";
     public static final String Table_1_col_1 = "object_naam";
     public static final String Table_1_col_2 = "object_type";
+    public static final String Table_1_col_3 = "object_foto_path";
 
     public Database(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -27,7 +28,7 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + DATABASE_table_1 + "(" + Table_1_col_0 + " INTEGER DEFAULT 0 primary key ,"
-        + Table_1_col_1 + " TEXT ," + Table_1_col_2 + " INTEGER default 0)");
+        + Table_1_col_1 + " TEXT ," + Table_1_col_2 + " INTEGER default 0 ," + Table_1_col_3 + " TEXT default null)");
     }
 
     @Override
@@ -61,6 +62,18 @@ public class Database extends SQLiteOpenHelper {
         contentValues.put(Table_1_col_0, IDMAKER_TABLE_1());
         contentValues.put(Table_1_col_1, naam);
         contentValues.put(Table_1_col_2, type);
+        contentValues.put(Table_1_col_3, "null");
+
+        sqLiteDatabase.insert(DATABASE_table_1, null, contentValues);
+    }
+    public void addToTabel1(String naam, int type, String path) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(Table_1_col_0, IDMAKER_TABLE_1());
+        contentValues.put(Table_1_col_1, naam);
+        contentValues.put(Table_1_col_2, type);
+        contentValues.put(Table_1_col_3, path);
 
         sqLiteDatabase.insert(DATABASE_table_1, null, contentValues);
     }

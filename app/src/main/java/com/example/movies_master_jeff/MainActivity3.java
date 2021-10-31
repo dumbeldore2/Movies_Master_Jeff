@@ -65,6 +65,9 @@ public class MainActivity3 extends AppCompatActivity {
     //output stream ininten
     OutputStream outputStream;
 
+    //string initen
+    String path;
+
     //for fotos to get
     private static final int IMAGE_PICK_CODE = 1000;
     private static final int PERMISSON_CODE = 1001;
@@ -105,6 +108,9 @@ public class MainActivity3 extends AppCompatActivity {
         //imageview connnecten
         imageView = findViewById(R.id.image_1);
 
+        //string default value geven
+        path = "null";
+
         //funties
         background_ani();
         fun_text();
@@ -134,6 +140,11 @@ public class MainActivity3 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                if (!getNaam().equals(null)){
+                    database.addToTabel1(getNaam(),nummer,path);
+                }
+               //dees moet miss niet meer
+                /*
                 if (ActivityCompat.checkSelfPermission(MainActivity3.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                     System.out.println("true");
                     {
@@ -145,10 +156,14 @@ public class MainActivity3 extends AppCompatActivity {
                     ActivityCompat.requestPermissions(MainActivity3.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},100);
 
                 }
+                 */
+                startActivity(intent);
             }
         });
     }
 
+    //proberen om dit niet meer te gebruiken , want dit werkt totaal niet
+    /*
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -197,6 +212,7 @@ public class MainActivity3 extends AppCompatActivity {
             }
         }
     }
+     */
 
     public void fun_text(){
         if (nummer == 1){
@@ -235,6 +251,7 @@ public class MainActivity3 extends AppCompatActivity {
             if (resultCode == Activity.RESULT_OK){
                 Uri imageUri = data.getData();
                 imageView.setImageURI(imageUri);
+                path = imageUri.getPath();
             }
         }
     }
