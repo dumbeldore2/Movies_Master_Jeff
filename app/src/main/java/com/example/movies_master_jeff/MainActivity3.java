@@ -164,10 +164,11 @@ public class MainActivity3 extends AppCompatActivity {
 
     public void  createFolder(){
         //init file
-        File file = new File(Environment.getExternalStorageDirectory(),"lol");
+        File file = new File(Environment.getExternalStorageDirectory().getPath()+ "/lol");
         System.out.println(Environment.getExternalStorageDirectory().getAbsolutePath());
         System.out.println(Environment.getExternalStorageDirectory().getPath());
-        File file2 = new File("/storage/lol");
+        System.out.println(file.getAbsolutePath());
+        System.out.println(file.getPath());
         //check condition
         if (file.exists()){
             //dit is als de directory al bestaat
@@ -176,8 +177,13 @@ public class MainActivity3 extends AppCompatActivity {
         } else {
             //dit is als de directory nog niet bestaat
             System.out.println("lllllllllllllllllllllllllllllllol");
+            if (file.mkdirs()){
+                //lol tis goed gegaan
+                System.out.println("wojoooo");
+            } else {
+                System.out.println("cmon man");
+            }
             file.mkdir();
-            file2.mkdir();
             //check conditie
             if (file.isDirectory()){
                 //als de directory is gemaakt
