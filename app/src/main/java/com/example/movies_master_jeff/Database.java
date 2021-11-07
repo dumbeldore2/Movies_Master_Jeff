@@ -80,10 +80,24 @@ public class Database extends SQLiteOpenHelper {
 
 
     public String[] namen() {
-
-
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("select " + Table_1_col_1 + " from " + DATABASE_table_1 + "", null);
+
+        String[] uits = new String[cursor.getCount()];
+        for (int i = 0; i <= cursor.getCount(); i++) {
+            if (cursor.moveToPosition(i)) {
+                StringBuffer stringBuffer = new StringBuffer();
+                stringBuffer.append(cursor.getString(0));
+                uits[i] = stringBuffer.toString();
+            }
+        }
+        return uits;
+    }
+
+    public String[] paths() {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select " + Table_1_col_3 + " from " + DATABASE_table_1 + "",
+                null);
 
         String[] uits = new String[cursor.getCount()];
         for (int i = 0; i <= cursor.getCount(); i++) {

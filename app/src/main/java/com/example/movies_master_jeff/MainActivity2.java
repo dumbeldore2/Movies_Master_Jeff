@@ -33,6 +33,7 @@ public class MainActivity2 extends AppCompatActivity {
 
     //dit zijn de namen voor de listview
     String namen[] = {};
+    String pathss[] = {};
 
     //de listvieuw
     ListView listView;
@@ -81,7 +82,7 @@ public class MainActivity2 extends AppCompatActivity {
         addToListview();
 
         //de adapter aan het listview hangen
-        mainActivity2_lijst = new MainActivity2_lijst(this,namen);
+        mainActivity2_lijst = new MainActivity2_lijst(this,namen,pathss);
         listView.setAdapter(mainActivity2_lijst);
 
     }
@@ -144,6 +145,7 @@ public class MainActivity2 extends AppCompatActivity {
     public void addToListview(){
         if (database.namen().length != 0){
             namen = database.namen().clone();
+            pathss = database.paths().clone();
         }
     }
 }

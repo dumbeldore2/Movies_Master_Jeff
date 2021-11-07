@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
@@ -19,6 +20,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -246,13 +248,20 @@ public class MainActivity3 extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode , @Nullable Intent data){
         super.onActivityResult(requestCode,resultCode,data);
+        if (resultCode == RESULT_OK) {
 
-        if (requestCode == IMAGE_PICK_CODE){
-            if (resultCode == Activity.RESULT_OK){
-                Uri imageUri = data.getData();
-                imageView.setImageURI(imageUri);
-                path = imageUri.getPath();
-            }
+            Uri selectedImageUri = data.getData();
+            String s = getRealPathFromURI(selectedImageUri);
+            System.out.println(s);
         }
+    }
+    public String getRealPathFromURI(Uri uri) {
+        String[] projection = { MediaStore.Images.Media.DATA };
+        @SuppressWarnings("deprecation")
+        Cursor cursor = managedQuery(uri, projection, null, null, null);
+        int column_index = cursor
+                .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        return cursor.getString(column_index);
     }
 }
