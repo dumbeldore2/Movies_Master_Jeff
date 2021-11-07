@@ -10,6 +10,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -31,6 +32,7 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -248,20 +250,13 @@ public class MainActivity3 extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode , @Nullable Intent data){
         super.onActivityResult(requestCode,resultCode,data);
-        if (resultCode == RESULT_OK) {
-
-            Uri selectedImageUri = data.getData();
-            String s = getRealPathFromURI(selectedImageUri);
-            System.out.println(s);
+        //dit pakt de uri en zet deze gewoon zo zodat de foto direct gebruikt kan worden in
+        // deze main activity
+        if (requestCode == IMAGE_PICK_CODE){
+            if (resultCode == Activity.RESULT_OK){
+                Uri imageUri = data.getData();
+                imageView.setImageURI(imageUri);
+            }
         }
-    }
-    public String getRealPathFromURI(Uri uri) {
-        String[] projection = { MediaStore.Images.Media.DATA };
-        @SuppressWarnings("deprecation")
-        Cursor cursor = managedQuery(uri, projection, null, null, null);
-        int column_index = cursor
-                .getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-        cursor.moveToFirst();
-        return cursor.getString(column_index);
     }
 }
