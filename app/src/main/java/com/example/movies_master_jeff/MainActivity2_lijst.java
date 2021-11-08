@@ -37,16 +37,6 @@ public class MainActivity2_lijst extends ArrayAdapter<String> {
         View row = layoutInflater.inflate(R.layout.activity_main2_lijst,parent,false);
         ImageView images = row.findViewById(R.id.image_listview);
         System.out.println(paths[position]);
-
-        /*
-        ContentValues values = new ContentValues(1);
-        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpg");
-        /*Uri uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                values);
-         */
-        File file = new File(paths[position]);
-        Bitmap myBitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-        images.setImageBitmap(myBitmap);
         TextView names = row.findViewById(R.id.text_listview);
         names.setText(string[position]);
 

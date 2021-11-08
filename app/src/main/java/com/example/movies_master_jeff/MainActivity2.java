@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -76,10 +77,13 @@ public class MainActivity2 extends AppCompatActivity {
         /*
         background_ani();
          */
+
+        //functies
         click_textview3();
         click_textview4();
         click_textview5();
         addToListview();
+        clickListviewItem();
 
         //de adapter aan het listview hangen
         mainActivity2_lijst = new MainActivity2_lijst(this,namen,pathss);
@@ -147,5 +151,15 @@ public class MainActivity2 extends AppCompatActivity {
             namen = database.namen().clone();
             pathss = database.paths().clone();
         }
+    }
+
+    public void clickListviewItem(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity4.class);
+                startActivity(intent);
+            }
+        });
     }
 }
