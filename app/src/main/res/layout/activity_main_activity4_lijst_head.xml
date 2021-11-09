@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="75dp"
     android:orientation="vertical"
-    android:padding="8dp"
-    android:background="#000000">
+    android:background="@drawable/gradiant1">
 
 
     <TextView
         android:id="@+id/lblListHeader"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
-        android:textSize="17dp"
-        android:textColor="#f9f93d"
-        android:text="lol"/>
+        android:textSize="36dp"
+        android:textColor="@color/white"
+        android:text="seizoen 1"
+        android:fontFamily="@font/montserrat_alternates"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        />
 
-</LinearLayout>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"        android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+        android:layout_marginRight="40dp"/>
+</RelativeLayout>

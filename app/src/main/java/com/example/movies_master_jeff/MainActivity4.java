@@ -48,34 +48,45 @@ public class MainActivity4 extends AppCompatActivity {
         listDataChild = new HashMap<String, List<String>>();
 
         // Adding child data
-        listDataHeader.add("Top 250");
-        listDataHeader.add("Now Showing");
-        listDataHeader.add("Coming Soon..");
+        listDataHeader.add("Seizoen 1");
+        listDataHeader.add("Seizoen 2");
+        listDataHeader.add("Seizoen 3");
 
         // Adding child data
         List<String> top250 = new ArrayList<String>();
-        top250.add("The Shawshank Redemption");
-        top250.add("The Godfather");
-        top250.add("The Godfather: Part II");
-        top250.add("Pulp Fiction");
-        top250.add("The Good, the Bad and the Ugly");
-        top250.add("The Dark Knight");
-        top250.add("12 Angry Men");
+        top250.add("Episode 1");
+        top250.add("Episode 2");
+        top250.add("Episode 3");
+        top250.add("Episode 4");
+        top250.add("Episode 5");
+        top250.add("Episode 6");
+        top250.add("Episode 7");
+        top250.add("Episode 8");
+        top250.add("Episode 9");
 
         List<String> nowShowing = new ArrayList<String>();
-        nowShowing.add("The Conjuring");
-        nowShowing.add("Despicable Me 2");
-        nowShowing.add("Turbo");
-        nowShowing.add("Grown Ups 2");
-        nowShowing.add("Red 2");
-        nowShowing.add("The Wolverine");
+        nowShowing.add("Episode 1");
+        nowShowing.add("Episode 2");
+        nowShowing.add("Episode 3");
+        nowShowing.add("Episode 4");
+        nowShowing.add("Episode 5");
+        nowShowing.add("Episode 6");
+        nowShowing.add("Episode 7");
+        nowShowing.add("Episode 8");
+        nowShowing.add("Episode 9");
 
         List<String> comingSoon = new ArrayList<String>();
-        comingSoon.add("2 Guns");
-        comingSoon.add("The Smurfs 2");
-        comingSoon.add("The Spectacular Now");
-        comingSoon.add("The Canyons");
-        comingSoon.add("Europa Report");
+        comingSoon.add("Episode 1");
+        comingSoon.add("Episode 2");
+        comingSoon.add("Episode 3");
+        comingSoon.add("Episode 4");
+        comingSoon.add("Episode 5");
+        comingSoon.add("Episode 6");
+        comingSoon.add("Episode 7");
+        comingSoon.add("Episode 8");
+        comingSoon.add("Episode 9");
+        comingSoon.add("Episode 10");
+        comingSoon.add("Episode 1100");
 
         listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
         listDataChild.put(listDataHeader.get(1), nowShowing);
