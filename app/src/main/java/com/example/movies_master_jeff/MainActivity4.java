@@ -2,7 +2,9 @@ package com.example.movies_master_jeff;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ExpandableListView;
 
