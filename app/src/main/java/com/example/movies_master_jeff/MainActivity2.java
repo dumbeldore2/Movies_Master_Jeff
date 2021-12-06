@@ -84,6 +84,7 @@ public class MainActivity2 extends AppCompatActivity {
         click_textview5();
         addToListview();
         clickListviewItem();
+        System.out.println(database.aantalSeizoenen());
 
         //de adapter aan het listview hangen
         mainActivity2_lijst = new MainActivity2_lijst(this,namen,pathss);

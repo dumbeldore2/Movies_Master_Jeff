@@ -3,10 +3,12 @@ package com.example.movies_master_jeff;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,10 +16,12 @@ import java.util.List;
 
 public class MainActivity4 extends AppCompatActivity {
 
+    TextView text_1;
     MainActivity4_lijst listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
+    Database database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,18 @@ public class MainActivity4 extends AppCompatActivity {
         // get the listview
         expListView = (ExpandableListView) findViewById(R.id.expanded_list_view);
 
+        //conecteer de textview
+        text_1 = findViewById(R.id.text_1);
+
+        //database conecteren
+        database = new Database(this);
+
+        //functies
+        click_fun_1();
+        list_fun();
+    }
+
+    public void list_fun(){
         // preparing list data
         prepareListData();
 
@@ -42,6 +58,15 @@ public class MainActivity4 extends AppCompatActivity {
         expListView.setAdapter(listAdapter);
     }
 
+    public void  click_fun_1(){
+        text_1.setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
+                startActivity(intent);
+            }
+        });
+    }
+
     /*
      * Preparing the list data
      */
@@ -49,10 +74,9 @@ public class MainActivity4 extends AppCompatActivity {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
-        // Adding child data
-        listDataHeader.add("Seizoen 1");
-        listDataHeader.add("Seizoen 2");
-        listDataHeader.add("Seizoen 3");
+        for (int i = 0; i < database.aantalSeizoenen(); i++){
+            listDataHeader.add("Seizoen " + (i += 1));
+        }
 
         // Adding child data
         List<String> top250 = new ArrayList<String>();
@@ -66,32 +90,7 @@ public class MainActivity4 extends AppCompatActivity {
         top250.add("Episode 8");
         top250.add("Episode 9");
 
-        List<String> nowShowing = new ArrayList<String>();
-        nowShowing.add("Episode 1");
-        nowShowing.add("Episode 2");
-        nowShowing.add("Episode 3");
-        nowShowing.add("Episode 4");
-        nowShowing.add("Episode 5");
-        nowShowing.add("Episode 6");
-        nowShowing.add("Episode 7");
-        nowShowing.add("Episode 8");
-        nowShowing.add("Episode 9");
+        listDataChild.put(listDataHeader.get(0), top250);
 
-        List<String> comingSoon = new ArrayList<String>();
-        comingSoon.add("Episode 1");
-        comingSoon.add("Episode 2");
-        comingSoon.add("Episode 3");
-        comingSoon.add("Episode 4");
-        comingSoon.add("Episode 5");
-        comingSoon.add("Episode 6");
-        comingSoon.add("Episode 7");
-        comingSoon.add("Episode 8");
-        comingSoon.add("Episode 9");
-        comingSoon.add("Episode 10");
-        comingSoon.add("Episode 1100");
-
-        listDataChild.put(listDataHeader.get(0), top250); // Header, Child data
-        listDataChild.put(listDataHeader.get(1), nowShowing);
-        listDataChild.put(listDataHeader.get(2), comingSoon);
     }
 }

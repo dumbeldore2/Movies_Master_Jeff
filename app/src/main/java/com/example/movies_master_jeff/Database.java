@@ -2,6 +2,7 @@ package com.example.movies_master_jeff;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import java.net.PortUnreachableException;
 import java.util.ArrayList;
 
 public class Database extends SQLiteOpenHelper {
@@ -20,6 +22,7 @@ public class Database extends SQLiteOpenHelper {
     public static final String Table_1_col_1 = "object_naam";
     public static final String Table_1_col_2 = "object_type";
     public static final String Table_1_col_3 = "object_foto_path";
+    public static final String Table_1_col_4 = "object_aantal_seizoenen";
 
     public Database(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -28,7 +31,8 @@ public class Database extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + DATABASE_table_1 + "(" + Table_1_col_0 + " INTEGER DEFAULT 0 primary key ,"
-        + Table_1_col_1 + " TEXT ," + Table_1_col_2 + " INTEGER default 0 ," + Table_1_col_3 + " TEXT default null)");
+        + Table_1_col_1 + " TEXT ," + Table_1_col_2 + " INTEGER default 0 ," + Table_1_col_3 + " " +
+                "TEXT default null," + Table_1_col_4 + " TEXT default '1;1')");
     }
 
     @Override
@@ -108,5 +112,22 @@ public class Database extends SQLiteOpenHelper {
             }
         }
         return uits;
+    }
+
+    public int aantalSeizoenen(){
+        int uit = 0;
+        String string = "";
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor =
+                sqLiteDatabase.rawQuery("select " + Table_1_col_4 + " from " + DATABASE_table_1 + "",
+                null);
+        if (cursor.moveToFirst()){
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer.append(cursor.getString(0));
+            string = stringBuffer.toString();
+        }
+
+        uit = Integer.parseInt(string.substring(0, string.indexOf(";")));
+        return  uit;
     }
 }
