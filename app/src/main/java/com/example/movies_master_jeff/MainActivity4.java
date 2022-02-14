@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
@@ -76,21 +77,12 @@ public class MainActivity4 extends AppCompatActivity {
 
         for (int i = 0; i < database.aantalSeizoenen(); i++){
             listDataHeader.add("Seizoen " + (i += 1));
+
+            ArrayList<String> strings = new ArrayList<>();
+            for (int j = 0 ; j < database.aantalEpisodes() ; i++){
+                strings.add("episode " + i );
+            }
+            listDataChild.put(listDataHeader.get(i), strings);
         }
-
-        // Adding child data
-        List<String> top250 = new ArrayList<String>();
-        top250.add("Episode 1");
-        top250.add("Episode 2");
-        top250.add("Episode 3");
-        top250.add("Episode 4");
-        top250.add("Episode 5");
-        top250.add("Episode 6");
-        top250.add("Episode 7");
-        top250.add("Episode 8");
-        top250.add("Episode 9");
-
-        listDataChild.put(listDataHeader.get(0), top250);
-
     }
 }

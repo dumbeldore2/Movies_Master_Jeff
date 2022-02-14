@@ -130,4 +130,20 @@ public class Database extends SQLiteOpenHelper {
         uit = Integer.parseInt(string.substring(0, string.indexOf(";")));
         return  uit;
     }
+    public int aantalEpisodes(){
+        int uit = 0;
+        String string = "";
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        Cursor cursor =
+                sqLiteDatabase.rawQuery("select " + Table_1_col_4 + " from " + DATABASE_table_1 + "",
+                        null);
+        if (cursor.moveToFirst()){
+            StringBuffer stringBuffer = new StringBuffer();
+            stringBuffer.append(cursor.getString(0));
+            string = stringBuffer.toString();
+        }
+
+        uit = Integer.parseInt(string.substring(string.indexOf(";") + 1));
+        return  uit;
+    }
 }
